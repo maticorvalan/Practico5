@@ -3,6 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package practico5.practico5.vistas;
+import practico5.*;
+
+import java.util.Map;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,6 +19,7 @@ public class eliminar extends javax.swing.JInternalFrame {
      */
     public eliminar() {
         initComponents();
+        combobox();
     }
 
     /**
@@ -26,18 +31,29 @@ public class eliminar extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ContactosElim = new javax.swing.JComboBox<>();
+        contactos = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
-        Eliminar = new javax.swing.JButton();
+        eliminar = new javax.swing.JButton();
         Salir = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
 
-        ContactosElim.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        contactos.setToolTipText("");
+        contactos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                contactosActionPerformed(evt);
+            }
+        });
 
+        jLabel1.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         jLabel1.setText("Contacto");
 
-        Eliminar.setText("Eliminar");
+        eliminar.setText("Eliminar");
+        eliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                eliminarMouseClicked(evt);
+            }
+        });
 
         Salir.setText("Salir");
         Salir.addActionListener(new java.awt.event.ActionListener() {
@@ -46,44 +62,46 @@ public class eliminar extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel2.setText("Eliminar Contacto");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(71, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jSeparator1)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(Eliminar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(27, 27, 27)
-                        .addComponent(ContactosElim, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(82, 82, 82))
             .addGroup(layout.createSequentialGroup()
-                .addGap(130, 130, 130)
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(122, 122, 122))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jSeparator1)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(eliminar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
+                                .addComponent(Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(82, 82, 82))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(42, 42, 42)
+                        .addComponent(contactos, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(63, 63, 63))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
                 .addComponent(jLabel2)
-                .addGap(45, 45, 45)
+                .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ContactosElim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                    .addComponent(jLabel1)
+                    .addComponent(contactos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Eliminar)
+                    .addComponent(eliminar)
                     .addComponent(Salir))
                 .addGap(43, 43, 43))
         );
@@ -95,11 +113,32 @@ public class eliminar extends javax.swing.JInternalFrame {
         dispose();
     }//GEN-LAST:event_SalirActionPerformed
 
+    private void contactosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactosActionPerformed
+
+    }//GEN-LAST:event_contactosActionPerformed
+
+    private void eliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarMouseClicked
+        Long numero = Long.parseLong((String) contactos.getSelectedItem());
+        int opcion = JOptionPane.showConfirmDialog(null, "Esta seguro que quiere eliminar el contacto "
+                + numero + "?", "Confirmacion", JOptionPane.OK_CANCEL_OPTION);
+        if(opcion == JOptionPane.OK_OPTION){
+            Directorio.borrarContacto(numero);
+            JOptionPane.showMessageDialog(null, "El contacto ha sido eliminado");
+            contactos.removeItem(numero.toString());
+        }
+    }//GEN-LAST:event_eliminarMouseClicked
+    private void combobox(){
+        contactos.removeAllItems();
+        for (Map.Entry<Long, Contacto> en : Directorio.listaContacto.entrySet()) {
+            Long num = en.getKey();
+            contactos.addItem(num.toString());
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> ContactosElim;
-    private javax.swing.JButton Eliminar;
     private javax.swing.JButton Salir;
+    private javax.swing.JComboBox<String> contactos;
+    private javax.swing.JButton eliminar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JSeparator jSeparator1;

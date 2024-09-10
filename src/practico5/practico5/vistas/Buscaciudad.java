@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package practico5.practico5.vistas;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+import practico5.*;
 
 /**
  *
@@ -15,6 +18,7 @@ public class Buscaciudad extends javax.swing.JInternalFrame {
      */
     public Buscaciudad() {
         initComponents();
+        busciudad.requestFocusInWindow();
     }
 
     /**
@@ -28,19 +32,34 @@ public class Buscaciudad extends javax.swing.JInternalFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        CiudadInsert = new javax.swing.JTextField();
+        busciudad = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        Buscar = new javax.swing.JButton();
+        btnbuscar = new javax.swing.JButton();
         Borrar = new javax.swing.JButton();
         Salir = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        modelo = new DefaultListModel();
+        lista = new javax.swing.JList<>();
 
-        jLabel1.setText("Buscar Por Ciudad");
+        jLabel1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jLabel1.setText("Buscar por ciudad");
 
+        jLabel2.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         jLabel2.setText("Ciudad");
 
-        Buscar.setText("Buscar");
+        btnbuscar.setText("Buscar");
+        btnbuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnbuscarMouseClicked(evt);
+            }
+        });
 
         Borrar.setText("Borrar");
+        Borrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BorrarMouseClicked(evt);
+            }
+        });
         Borrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BorrarActionPerformed(evt);
@@ -54,45 +73,60 @@ public class Buscaciudad extends javax.swing.JInternalFrame {
             }
         });
 
+        lista.setModel(modelo);
+        jScrollPane1.setViewportView(lista);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Borrar, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(140, 140, 140)
+                        .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(64, 64, 64)
+                        .addGap(56, 56, 56)
+                        .addComponent(btnbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(173, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(Borrar, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(53, 53, 53)
+                        .addComponent(Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(CiudadInsert, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(99, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(71, 71, 71)
+                                .addComponent(busciudad, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(51, 51, 51)
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(52, 52, 52))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
                 .addComponent(jLabel1)
-                .addGap(36, 36, 36)
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(CiudadInsert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
+                    .addComponent(busciudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Buscar)
+                    .addComponent(Salir)
                     .addComponent(Borrar)
-                    .addComponent(Salir))
-                .addContainerGap(22, Short.MAX_VALUE))
+                    .addComponent(btnbuscar)))
         );
 
         pack();
@@ -106,14 +140,35 @@ public class Buscaciudad extends javax.swing.JInternalFrame {
         dispose();
     }//GEN-LAST:event_SalirActionPerformed
 
+    private void btnbuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnbuscarMouseClicked
+        String cdad = busciudad.getText();
+        ArrayList<Contacto> contactosEncontrados = Directorio.buscarContactos(cdad);
+        modelo.clear();
+        for (Contacto contacto : contactosEncontrados) {
+            modelo.addElement(contacto);
+            modelo.addElement("");
+        }
+        if (contactosEncontrados.isEmpty()) {
+            modelo.addElement("No se encontraron contactos en la ciudad: " + cdad);
+        }
+    }//GEN-LAST:event_btnbuscarMouseClicked
+
+    private void BorrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BorrarMouseClicked
+        modelo.clear();
+        busciudad.setText("");
+    }//GEN-LAST:event_BorrarMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Borrar;
-    private javax.swing.JButton Buscar;
-    private javax.swing.JTextField CiudadInsert;
     private javax.swing.JButton Salir;
+    private javax.swing.JButton btnbuscar;
+    private javax.swing.JTextField busciudad;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JList<String> lista;
+    public DefaultListModel modelo;
     // End of variables declaration//GEN-END:variables
 }

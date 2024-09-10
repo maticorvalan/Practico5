@@ -4,17 +4,21 @@
  */
 package practico5.practico5.vistas;
 
+import java.util.Map;
+import practico5.Contacto;
+import practico5.Directorio;
+
 /**
  *
  * @author Matias
  */
 public class menu extends javax.swing.JFrame {
-
-    /**
-     * Creates new form menu
-     */
+    
+    private Directorio directorio;
+    
     public menu() {
         initComponents();
+        
     }
 
     /**
@@ -31,6 +35,7 @@ public class menu extends javax.swing.JFrame {
         contacto = new javax.swing.JMenu();
         Acont = new javax.swing.JMenuItem();
         Econt = new javax.swing.JMenuItem();
+        Mostrar = new javax.swing.JMenuItem();
         buscar = new javax.swing.JMenu();
         Bnum = new javax.swing.JMenuItem();
         Bape = new javax.swing.JMenuItem();
@@ -42,11 +47,11 @@ public class menu extends javax.swing.JFrame {
         desktop.setLayout(desktopLayout);
         desktopLayout.setHorizontalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 496, Short.MAX_VALUE)
+            .addGap(0, 453, Short.MAX_VALUE)
         );
         desktopLayout.setVerticalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 448, Short.MAX_VALUE)
+            .addGap(0, 440, Short.MAX_VALUE)
         );
 
         contacto.setText("Contactos");
@@ -66,6 +71,14 @@ public class menu extends javax.swing.JFrame {
             }
         });
         contacto.add(Econt);
+
+        Mostrar.setText("Mostrar contactos");
+        Mostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MostrarActionPerformed(evt);
+            }
+        });
+        contacto.add(Mostrar);
 
         menubar.add(contacto);
 
@@ -103,15 +116,11 @@ public class menu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(desktop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(desktop)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(desktop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(desktop)
         );
 
         pack();
@@ -125,6 +134,12 @@ public class menu extends javax.swing.JFrame {
         añ.setVisible(true);
         desktop.add(añ);
         desktop.moveToFront(añ);
+        try {
+            añ.setSelected(true);
+        } catch (java.beans.PropertyVetoException e) {
+            e.printStackTrace();
+        }
+        
     }//GEN-LAST:event_AcontActionPerformed
 
     private void EcontActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EcontActionPerformed
@@ -134,6 +149,11 @@ public class menu extends javax.swing.JFrame {
         el.setVisible(true);
         desktop.add(el);
         desktop.moveToFront(el);
+        try {
+            el.setSelected(true);
+        } catch (java.beans.PropertyVetoException e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_EcontActionPerformed
 
     private void BnumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BnumActionPerformed
@@ -143,6 +163,11 @@ public class menu extends javax.swing.JFrame {
         bn.setVisible(true);
         desktop.add(bn);
         desktop.moveToFront(bn);
+        try {
+            bn.setSelected(true);
+        } catch (java.beans.PropertyVetoException e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_BnumActionPerformed
 
     private void BapeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BapeActionPerformed
@@ -152,6 +177,11 @@ public class menu extends javax.swing.JFrame {
         ba.setVisible(true);
         desktop.add(ba);
         desktop.moveToFront(ba);
+        try {
+            ba.setSelected(true);
+        } catch (java.beans.PropertyVetoException e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_BapeActionPerformed
 
     private void BciuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BciuActionPerformed
@@ -161,41 +191,31 @@ public class menu extends javax.swing.JFrame {
         bc.setVisible(true);
         desktop.add(bc);
         desktop.moveToFront(bc);
+        try {
+            bc.setSelected(true);
+        } catch (java.beans.PropertyVetoException e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_BciuActionPerformed
+
+    private void MostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarActionPerformed
+        desktop.removeAll();
+        desktop.repaint();
+        mostrar mos = new mostrar();
+        mos.setVisible(true);
+        desktop.add(mos);
+        desktop.moveToFront(mos);
+        try {
+            mos.setSelected(true);
+        } catch (java.beans.PropertyVetoException e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_MostrarActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new menu().setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -204,6 +224,7 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem Bciu;
     private javax.swing.JMenuItem Bnum;
     private javax.swing.JMenuItem Econt;
+    private javax.swing.JMenuItem Mostrar;
     private javax.swing.JMenu buscar;
     private javax.swing.JMenu contacto;
     private javax.swing.JDesktopPane desktop;

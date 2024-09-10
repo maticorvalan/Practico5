@@ -9,13 +9,13 @@ package practico5;
  * @author El Angel
  */
 public class Contacto {
-    private int DNI;
+    private String DNI;
     private String nombre;
     private String apellido;
     private String direccion;
     private String ciudad;
 
-    public Contacto(int DNI, String nombre, String apellido, String direccion, String ciudad) {
+    public Contacto(String DNI, String nombre, String apellido, String direccion, String ciudad) {
         this.DNI = DNI;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -23,11 +23,11 @@ public class Contacto {
         this.ciudad = ciudad;
     }
 
-    public int getDNI() {
+    public String getDNI() {
         return DNI;
     }
 
-    public void setDNI(int DNI) {
+    public void setDNI(String DNI) {
         this.DNI = DNI;
     }
 
@@ -65,7 +65,7 @@ public class Contacto {
 
     @Override
     public String toString() {
-        return "Contacto{" + "DNI=" + DNI + ", nombre=" + nombre + ", apellido=" + apellido + ", direccion=" + direccion + ", ciudad=" + ciudad + '}';
+        return "Contacto{" + "DNI=" + DNI + ", Nombre=" + nombre + ", Apellido=" + apellido + ", Direccion=" + direccion + ", Ciudad=" + ciudad + '}';
     }
     
     

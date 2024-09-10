@@ -15,21 +15,18 @@ import javax.swing.JOptionPane;
  * @author El Angel
  */
 public class Directorio {
-    TreeMap<Long,Contacto> listaContacto;
+    public static TreeMap<Long,Contacto> listaContacto = new TreeMap<>();
 
-    public Directorio() {
-        this.listaContacto= new TreeMap<>();
-    }
     
-    public void añadirContacto(Contacto contacto, Long telefono){
+    public static void añadirContacto(Long telefono, Contacto contacto){
         listaContacto.put(telefono, contacto);        
     }
     
-    public void borrarContacto(Long telefono){
+    public static void borrarContacto(Long telefono){
         listaContacto.remove(telefono);          
     }
   
-    public Contacto buscarContacto(Long telefono) {
+    public static Contacto buscarContacto(Long telefono) {
         Contacto contacto = listaContacto.get(telefono);
         if (contacto != null) {
             JOptionPane.showMessageDialog(null, "Contacto Encontado", "Buscador", JOptionPane.INFORMATION_MESSAGE);
@@ -41,11 +38,11 @@ public class Directorio {
         return contacto;
     }
     
-    public TreeSet<Long> buscarTelefono (String apellido){
+    public static TreeSet<Long> buscarTelefono (String apellido){
        TreeSet<Long> listaTelefono=new TreeSet<>();
         for (Map.Entry<Long, Contacto> entry : listaContacto.entrySet()) {
             Contacto contacto = entry.getValue();            
-            if (contacto.getNombre().equalsIgnoreCase(apellido)) {
+            if (contacto.getApellido().equalsIgnoreCase(apellido)) {
                 Long telefono=entry.getKey();
                 listaTelefono.add(telefono);
             }
@@ -53,15 +50,15 @@ public class Directorio {
         return listaTelefono;        
     }
 
-    public ArrayList<Contacto> buscarContacto (String ciudad){
+    public static ArrayList<Contacto> buscarContactos (String ciudad){
        ArrayList<Contacto> listaDeContactos=new ArrayList<>();       
         for (Map.Entry<Long, Contacto> entry : listaContacto.entrySet()) {
             Contacto contacto = entry.getValue();            
             if (contacto.getCiudad().equalsIgnoreCase(ciudad)) {
-                listaDeContactos.add(contacto);               
+                listaDeContactos.add(contacto);
             }
         }        
-        return listaDeContactos;        
+        return listaDeContactos;     
     }
     
     

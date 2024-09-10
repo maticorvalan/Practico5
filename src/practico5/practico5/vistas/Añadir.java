@@ -4,17 +4,18 @@
  */
 package practico5.practico5.vistas;
 
+import java.awt.HeadlessException;
+import javax.swing.JOptionPane;
+import practico5.*;
+
 /**
  *
  * @author Matias
  */
 public class Añadir extends javax.swing.JInternalFrame {
-
-    /**
-     * Creates new form Añadir
-     */
     public Añadir() {
         initComponents();
+        DNIinsert.requestFocusInWindow();
     }
 
     /**
@@ -29,10 +30,8 @@ public class Añadir extends javax.swing.JInternalFrame {
         Guardar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        Buscar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         TelefonoInsert = new javax.swing.JTextField();
-        Borrar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         nuevo = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -47,23 +46,35 @@ public class Añadir extends javax.swing.JInternalFrame {
         CiudadInsert = new javax.swing.JTextField();
 
         Guardar.setText("Guardar");
+        Guardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                GuardarMouseClicked(evt);
+            }
+        });
 
+        jLabel4.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         jLabel4.setText("Apellido");
 
+        jLabel5.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         jLabel5.setText("Direccion");
 
-        Buscar.setText("Buscar");
-
+        jLabel3.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         jLabel3.setText("Nombre");
 
-        Borrar.setText("Borrar");
-
         nuevo.setText("Nuevo");
+        nuevo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nuevoMouseClicked(evt);
+            }
+        });
 
+        jLabel2.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         jLabel2.setText("DNI");
 
+        jLabel7.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         jLabel7.setText("Telefono");
 
+        jLabel1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 102, 255));
         jLabel1.setText("Formulario de contacto");
 
@@ -92,6 +103,7 @@ public class Añadir extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         jLabel6.setText("Ciudad");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -126,8 +138,7 @@ public class Añadir extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(DNIinsert, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Buscar))
+                                .addGap(56, 56, 56))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(NombreInsert, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -138,13 +149,11 @@ public class Añadir extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(nuevo)
-                        .addGap(18, 18, 18)
+                        .addGap(47, 47, 47)
                         .addComponent(Guardar)
-                        .addGap(18, 18, 18)
-                        .addComponent(Borrar)
-                        .addGap(18, 18, 18)
+                        .addGap(42, 42, 42)
                         .addComponent(Salir)
-                        .addGap(49, 49, 49))))
+                        .addGap(55, 55, 55))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,8 +163,7 @@ public class Añadir extends javax.swing.JInternalFrame {
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(DNIinsert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Buscar))
+                    .addComponent(DNIinsert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -178,13 +186,12 @@ public class Añadir extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TelefonoInsert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nuevo)
                     .addComponent(Guardar)
-                    .addComponent(Borrar)
-                    .addComponent(Salir))
-                .addGap(33, 33, 33))
+                    .addComponent(Salir)
+                    .addComponent(nuevo))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
@@ -206,11 +213,36 @@ public class Añadir extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_DireccionInsertActionPerformed
 
+    private void GuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GuardarMouseClicked
+        try{
+            String dni = DNIinsert.getText();
+            String nom = NombreInsert.getText();
+            String ape = ApellidoInsert.getText();
+            String dire = DireccionInsert.getText();
+            String ciudad = CiudadInsert.getText();
+            Long tele = Long.parseLong(TelefonoInsert.getText());
+            Contacto contact = new Contacto(dni,nom,ape,dire,ciudad);
+            Directorio.añadirContacto(tele, contact);
+            JOptionPane.showMessageDialog(null, "Contacto añadido con exito!");
+        } catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(this, "Por favor ingrese un número de teléfono válido.");
+        } catch (HeadlessException ex) {
+            JOptionPane.showMessageDialog(this, "Error al agregar el contacto: " + ex.getMessage());
+        }    
+    }//GEN-LAST:event_GuardarMouseClicked
+
+    private void nuevoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nuevoMouseClicked
+        DNIinsert.setText("");
+        NombreInsert.setText("");
+        ApellidoInsert.setText("");
+        DireccionInsert.setText("");
+        CiudadInsert.setText("");
+        TelefonoInsert.setText("");
+    }//GEN-LAST:event_nuevoMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ApellidoInsert;
-    private javax.swing.JButton Borrar;
-    private javax.swing.JButton Buscar;
     private javax.swing.JTextField CiudadInsert;
     private javax.swing.JTextField DNIinsert;
     private javax.swing.JTextField DireccionInsert;
