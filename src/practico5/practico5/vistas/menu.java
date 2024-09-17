@@ -4,7 +4,10 @@
  */
 package practico5.practico5.vistas;
 
+import java.awt.Graphics;
+import java.awt.Image;
 import java.util.Map;
+import javax.swing.ImageIcon;
 import practico5.Contacto;
 import practico5.Directorio;
 
@@ -30,101 +33,109 @@ public class menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        desktop = new javax.swing.JDesktopPane();
-        menubar = new javax.swing.JMenuBar();
-        contacto = new javax.swing.JMenu();
-        Acont = new javax.swing.JMenuItem();
-        Econt = new javax.swing.JMenuItem();
-        Mostrar = new javax.swing.JMenuItem();
-        buscar = new javax.swing.JMenu();
-        Bnum = new javax.swing.JMenuItem();
-        Bape = new javax.swing.JMenuItem();
-        Bciu = new javax.swing.JMenuItem();
+        ImageIcon icon = new ImageIcon(getClass().getResource("/imagenes/fondo.jpg"
+            + ""));
+    Image image = icon.getImage();
+    desktop = new javax.swing.JDesktopPane(){
+        public void paintComponent(Graphics g){
+            g.drawImage(image,0,0,getWidth(),getHeight(),this);
+        }
+    }
+    ;
+    menubar = new javax.swing.JMenuBar();
+    contacto = new javax.swing.JMenu();
+    Acont = new javax.swing.JMenuItem();
+    Econt = new javax.swing.JMenuItem();
+    Mostrar = new javax.swing.JMenuItem();
+    buscar = new javax.swing.JMenu();
+    Bnum = new javax.swing.JMenuItem();
+    Bape = new javax.swing.JMenuItem();
+    Bciu = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+    setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout desktopLayout = new javax.swing.GroupLayout(desktop);
-        desktop.setLayout(desktopLayout);
-        desktopLayout.setHorizontalGroup(
-            desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 453, Short.MAX_VALUE)
-        );
-        desktopLayout.setVerticalGroup(
-            desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 440, Short.MAX_VALUE)
-        );
+    javax.swing.GroupLayout desktopLayout = new javax.swing.GroupLayout(desktop);
+    desktop.setLayout(desktopLayout);
+    desktopLayout.setHorizontalGroup(
+        desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGap(0, 453, Short.MAX_VALUE)
+    );
+    desktopLayout.setVerticalGroup(
+        desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGap(0, 440, Short.MAX_VALUE)
+    );
 
-        contacto.setText("Contactos");
+    contacto.setText("Contactos");
 
-        Acont.setText("Añadir Contacto");
-        Acont.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AcontActionPerformed(evt);
-            }
-        });
-        contacto.add(Acont);
+    Acont.setText("Añadir Contacto");
+    Acont.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            AcontActionPerformed(evt);
+        }
+    });
+    contacto.add(Acont);
 
-        Econt.setText("Eliminar Contacto");
-        Econt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EcontActionPerformed(evt);
-            }
-        });
-        contacto.add(Econt);
+    Econt.setText("Eliminar Contacto");
+    Econt.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            EcontActionPerformed(evt);
+        }
+    });
+    contacto.add(Econt);
 
-        Mostrar.setText("Mostrar contactos");
-        Mostrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MostrarActionPerformed(evt);
-            }
-        });
-        contacto.add(Mostrar);
+    Mostrar.setText("Mostrar contactos");
+    Mostrar.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            MostrarActionPerformed(evt);
+        }
+    });
+    contacto.add(Mostrar);
 
-        menubar.add(contacto);
+    menubar.add(contacto);
 
-        buscar.setText("Buscar");
+    buscar.setText("Buscar");
 
-        Bnum.setText("Buscar por numero");
-        Bnum.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BnumActionPerformed(evt);
-            }
-        });
-        buscar.add(Bnum);
+    Bnum.setText("Buscar por numero");
+    Bnum.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            BnumActionPerformed(evt);
+        }
+    });
+    buscar.add(Bnum);
 
-        Bape.setText("Buscar por apellido");
-        Bape.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BapeActionPerformed(evt);
-            }
-        });
-        buscar.add(Bape);
+    Bape.setText("Buscar por apellido");
+    Bape.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            BapeActionPerformed(evt);
+        }
+    });
+    buscar.add(Bape);
 
-        Bciu.setText("Buscar por ciudad");
-        Bciu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BciuActionPerformed(evt);
-            }
-        });
-        buscar.add(Bciu);
+    Bciu.setText("Buscar por ciudad");
+    Bciu.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            BciuActionPerformed(evt);
+        }
+    });
+    buscar.add(Bciu);
 
-        menubar.add(buscar);
+    menubar.add(buscar);
 
-        setJMenuBar(menubar);
+    setJMenuBar(menubar);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktop)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktop)
-        );
+    javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+    getContentPane().setLayout(layout);
+    layout.setHorizontalGroup(
+        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addComponent(desktop)
+    );
+    layout.setVerticalGroup(
+        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addComponent(desktop)
+    );
 
-        pack();
-        setLocationRelativeTo(null);
+    pack();
+    setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void AcontActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AcontActionPerformed

@@ -40,7 +40,7 @@ public class Buscanumero extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         contacto = new javax.swing.JTextArea();
 
-        setBackground(new java.awt.Color(51, 51, 51));
+        setBackground(new java.awt.Color(204, 204, 204));
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel1.setText("Buscar por numero");
